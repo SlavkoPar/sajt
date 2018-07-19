@@ -1,0 +1,25 @@
+
+/* 
+    Taking a mobile-first approach, 
+    the width of the Sidebar will be 80px 
+    and 320px on larger devices. 
+*/
+
+.Sidebar {
+    width: 120px;
+    background-color: rgba(32, 32, 35, 1);
+    height: 100%;
+    border-right: 1px solid rgba(189, 189, 192, 0.1);
+    transition: width 0.3s;
+     overflow-y: auto;  /* prevent the list from overflowing the Sidebar container */
+    /* border:2px solid maroon; */
+  }
+  
+  /* not small devices  */
+  @media (min-width: 576px) {
+    .Sidebar {
+      width: 250px;
+    }
+  }
+
+ 

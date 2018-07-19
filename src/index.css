@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700");
+
+body {
+  /* remove any unwanted spacing from body */
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+
+
+#root {
+  /* take up the entire height of the viewport. */
+  height: 100vh;
+}
+
+.App {
+  height: 100%;
+  display: flex;
+  color: rgba(189, 189, 192, 1);
+}
+
+
+pre {
+  color:'white';
+}
+
+
+

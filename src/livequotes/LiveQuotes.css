@@ -1,0 +1,57 @@
+
+.my-table {
+    position: relative !important;
+    table-layout: fixed;
+    white-space: nowrap;
+    border-top-width: 0px !important;
+    margin-bottom: 0px !important;
+    font-size: 14px;
+}
+
+.my-table > thead > tr > th {
+    padding: 0px;
+    border-bottom-width: 0px;
+    color:grey;
+}
+
+.my-table > tbody > tr:first-child > td {
+    border-top-width: 0px;
+    border-width: 0px;
+}
+
+.my-table > tbody > tr > td {
+    border-width: 0px;
+}
+
+
+
+.first {
+    font-size: 18px;
+}
+
+.last2 {
+    color: #5D5D5D;
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 28px;
+    padding: 0 2px;
+}
+
+.last2grid {
+    color: #5D5D5D;
+    font-weight: bold;
+    line-height: 12px;
+    font-size: 12px;
+    padding: 0 2px;
+}
+
+.adv-tpl sup {
+    vertical-align: super;
+    font-size: 85%;
+}
+
+.table-sm th,
+.table-sm td {
+    padding: 0.2rem !important;
+}
+
