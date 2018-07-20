@@ -53,9 +53,9 @@ const App = connector(({ model, dispatch }) => {
   return (
     
     <div className="wrapper">
-      <header class="header">
+      <header className="header">
       </header>
-      <article class="main">
+      <article className="main">
         <Game 
             model={model} 
             nComputers='3' 
