@@ -325,8 +325,9 @@ render(
 
 ### Testing
 
-Testing with Jest and Enzyme 
-Inside of 'src/cardgame/CardGame.test.js' I used <b>fetch-mock</b> to mock 'fetch' requests.
+Testing with Jest and Enzyme.<br/>
+File 'src/cardgame/CardGame.test.js'<br/>
+I used <b>fetch-mock</b> to mock web requests.
 
 ```js
 
