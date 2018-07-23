@@ -213,10 +213,10 @@ class Home extends Component {
   <Col xs="12" sm="6" md="6">
     <Card>
       <CardHeader>
-        What else
+        CardGame test
       </CardHeader>
       <CardBody>
-        ?
+      Inside of 'CardGame.test.js' I used fetch-mock to simulate 'fetch' request.
       </CardBody>
     </Card>
   </Col>
