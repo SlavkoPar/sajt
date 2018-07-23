@@ -349,7 +349,7 @@ it('shuffled N cards', () => {
   const wrapper = mount(<CardGame/>);
   const btn = wrapper.find('Game').find('button');
 
-  //btn.simulate('click');
+  // btn.simulate('click');
   // can't use simulate, because test would complete and exit before shuffleDeck has performed
 
   return store.dispatch(Actions.setInitialState({ nComputers, nCards })).then(() => {
