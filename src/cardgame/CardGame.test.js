@@ -27,7 +27,6 @@ const allCodes = ["7D", "5D", "AS", "JS", "3S", "2D", "4H", "7S", "9H", "0S", "5
 const getCard = () => {
   const index = getRandomInt(0, allCodes.length);
   const code = allCodes.splice(index, 1);
-  //console.log('ZABA:' + code)
   return { cards: [{ image:`https://deckofcardsapi.com/static/img/${code}.png`, code, suit : '' }] }
 }
 

@@ -210,14 +210,43 @@ class Home extends Component {
       </CardBody>
     </Card>
   </Col>
-  <Col xs="12" sm="6" md="6">
+  <Col xs="12" sm="12" md="12">
     <Card>
       <CardHeader>
-        CardGame test
+        CardGame test with Jest and Enzyme
       </CardHeader>
       <CardBody>
-      Inside of 'CardGame.test.js' I used fetch-mock to simulate 'fetch' request.
-      </CardBody>
+      Inside of 'src/cardgame/CardGame.test.js' I used <b>fetch-mock</b> to mock 'fetch' requests.
+      <pre style={{color:'white'}}>{`
+
+      const allCodes = ["7D", "5D", "AS", "JS", "3S", ...]
+      const getCard = () => {
+        const index = getInt(0, allCodes.length);
+        const code = allCodes.splice(index, 1);
+        return { cards: [{ image:code.png, code, suit : '' }] }
+      }
+
+      // instead of web requests, return json objects
+      fetchMock.getOnce('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1', { deck_id: 12345 });
+      fetchMock.get('https://deckofcardsapi.com/api/deck/12345/draw/?count=1', getCard); 
+      
+      const nComputers = 3;
+      const nCards = 10;
+      
+      const wrapper = mount(<CardGame/>);
+      const btn = wrapper.find('Game').find('button');
+      // btn.simulate('click');
+      // can't use simulate, because test would complete and exit before shuffleDeck has completed
+      return store.dispatch(Actions.setInitialState({ nComputers, nCards })).then(() => {
+          return store.dispatch(Actions.shuffleDeck()).then(() => {
+            const state = store.getState().toJS()
+            expect(state.human.cards.length).toEqual(nCards)
+            expect(state.computers.length).toEqual(nComputers)
+            state.computers.forEach(computer => expect(computer.cards.length).toEqual(nCards));
+          })
+      }) 
+        `}</pre>
+        </CardBody>
     </Card>
   </Col>
 </Row>              
