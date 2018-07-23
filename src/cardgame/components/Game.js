@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Board from './Board';
 
 const Game = ({ model, nComputers, nCards, onClick, onPlay }) => {
-  console.log('model:', model)
+  //console.log('model:', model)
   return (
     <div>
      

@@ -202,7 +202,7 @@ class Home extends Component {
             <li>SASS</li>
             <li>Bootstrap</li>
             <li>Reactstrap</li>
-            <li>Jest, Enzyme</li>
+            <li>Jest, Enzyme, Fetch-mock</li>
             <li>Github</li> 
           </ul>
           </Col>

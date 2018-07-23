@@ -21,7 +21,7 @@ import myReducers from './reducers'
 
 
 // Create the store
-const store = createStore(
+export const store = createStore(
     myReducers, 
     applyMiddleware(
       playMiddleware
@@ -59,7 +59,7 @@ const App = connector(({ model, dispatch }) => {
         <Game 
             model={model} 
             nComputers='3' 
-            nCards='5'             
+            nCards='3'             
             onClick={(nComputers, nCards) => {
               dispatch(Actions.setInitialState({nComputers, nCards}));
               dispatch(Actions.shuffleDeck());

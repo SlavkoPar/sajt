@@ -7,17 +7,22 @@ import { createReducer } from 'redux-act';
 import { Cmd, loop } from 'redux-loop'
 import { fromJS } from 'immutable';
 
+import { shuffleDeckRequest, drawTheCardRequest } from './fetchRequests';
 
 const Api = {
 
   shuffleDeck : function() {
-    return fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-              .then(resp => resp.json())
+    //return fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+    //          .then(resp => resp.json())
+    // moved to fetchRequests to enable fetch-mock
+    return shuffleDeckRequest()
   },
 
   drawTheCard : (deck_id) => (
-    fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=1`)
-              .then(resp => resp.json())
+    //fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=1`)
+    //          .then(resp => resp.json())
+    // moved to fetchRequests to enable fetch-mock
+    drawTheCardRequest(deck_id)
   ),
 
   humanThinking : (currentHand) => (
@@ -132,8 +137,10 @@ const myReducers = createReducer({
     );
   },
 
+
   [Actions.drawTheCardSucceed]: (state, json) => {
     const cardValue = { 'A': 1, '2': 2,'3': 3,'4': 4,'5': 5,'6': 6,'7': 7,'8': 8,'9': 9,'0': 10,'J': 12,'Q': 13,'K': 14 }
+    //console.log('AHHHHHHHHH', JSON.stringify(json))
     const { image, code, suit } = json.cards[0];
     const value =  cardValue[code[0]];
 
