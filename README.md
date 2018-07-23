@@ -323,3 +323,45 @@ render(
 
 ```
 
+
+Testing with Jest and Enzyme 
+Inside of 'src/cardgame/CardGame.test.js' I used <b>fetch-mock</b> to mock 'fetch' requests.
+
+### Code
+
+```js
+
+const allCodes = ["7D", "5D", "AS", "JS", "3S", "2D", "4H", ...]
+const getCard = () => {
+  const index = getRandomInt(0, allCodes.length);
+  const code = allCodes.splice(index, 1);
+  return { cards: [{ image:`https://deckofcardsapi.com/static/img/${code}.png`, code, suit : '' }] }
+}
+
+it('shuffled N cards', () => {
+  
+  const nComputers = 3;
+  const nCards = 10;
+
+  fetchMock.getOnce('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1', { deck_id: 12345 });
+  fetchMock.get('https://deckofcardsapi.com/api/deck/12345/draw/?count=1', getCard);
+
+  const wrapper = mount(<CardGame/>);
+  const btn = wrapper.find('Game').find('button');
+
+  //btn.simulate('click');
+  // can't use simulate, because test would complete and exit before shuffleDeck has performed
+
+  return store.dispatch(Actions.setInitialState({ nComputers, nCards })).then(() => {
+      console.log("state after initilization)", store.getState())
+      return store.dispatch(Actions.shuffleDeck()).then(() => {
+        const state = store.getState().toJS()
+        expect(state.human.cards.length).toEqual(nCards)
+        expect(state.computers.length).toEqual(nComputers)
+        state.computers.forEach(computer => expect(computer.cards.length).toEqual(nCards));
+      })
+  })
+
+});
+
+```
