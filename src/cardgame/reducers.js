@@ -7,30 +7,26 @@ import { createReducer } from 'redux-act';
 import { Cmd, loop } from 'redux-loop'
 import { fromJS } from 'immutable';
 
-import { shuffleDeckRequest, drawTheCardRequest } from './fetchRequests';
 
-const Api = {
+export const Api = {
 
   shuffleDeck : function() {
-    //return fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-    //          .then(resp => resp.json())
-    // moved to fetchRequests to enable fetch-mock
-    return shuffleDeckRequest()
+    return fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+              .then(resp => resp.json())
   },
 
   drawTheCard : (deck_id) => (
-    //fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=1`)
-    //          .then(resp => resp.json())
-    // moved to fetchRequests to enable fetch-mock
-    drawTheCardRequest(deck_id)
+    fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=1`)
+              .then(resp => resp.json())
   ),
 
+  humanThinkingTimeout: 1000,
   humanThinking : (currentHand) => (
     new Promise((resolve, reject) => {
       setTimeout(() => {
         // reject();  // gave up 
         resolve();
-      }, 1000);
+      }, Api.humanThinkingTimeout);
     })
     .then(() => currentHand)
   ),

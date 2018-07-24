@@ -6,6 +6,7 @@ import { shallow, mount } from 'enzyme';
 import initialState from './initialstate';
 import Actions from './actions';
 import myReducers from './reducers';
+import { Api } from './reducers';
 import { install } from 'redux-loop';
 
 import configureMockStore from 'redux-mock-store';
@@ -45,15 +46,30 @@ it('shuffled N cards', () => {
 
   const wrapper = mount(<CardGame/>);
   const btn = wrapper.find('Game').find('button');
-  //btn.simulate('click');
+  // btn.simulate('click');
   // can't use simulate, because test would complete and exit before shuffleDeck has performed
   return store.dispatch(Actions.setInitialState({ nComputers, nCards })).then(() => {
-      console.log("state after initilization)", store.getState())
+      // shuffle the cards
       return store.dispatch(Actions.shuffleDeck()).then(() => {
         const state = store.getState().toJS()
         expect(state.human.cards.length).toEqual(nCards)
         expect(state.computers.length).toEqual(nComputers)
         state.computers.forEach(computer => expect(computer.cards.length).toEqual(nCards));
+        // play
+        Api.humanThinkingTimeout = 0;   
+        return store.dispatch(Actions.playHand()).then(() => {
+          const state = store.getState().toJS()
+          console.log(">>>>>>>>");
+          console.log(state);
+          expect(state.human.cards.length).toEqual(0)
+          expect(state.computers.length).toEqual(nComputers)
+          state.computers.forEach(computer => expect(computer.cards.length).toEqual(0));
+          // nCards hands
+          expect(state.game.hands.length).toEqual(nCards);
+          // each hand with (human)+nComputers
+          state.game.hands.forEach(hand => expect(hand.cards.length).toEqual(1+nComputers));
+          })
+  
       })
   })
 

@@ -216,8 +216,8 @@ class Home extends Component {
         CardGame test with Jest and Enzyme
       </CardHeader>
       <CardBody>
-      Inside of 'src/cardgame/CardGame.test.js' I used <b>fetch-mock</b> to mock 'fetch' requests.
-      <pre style={{color:'white'}}>{`
+      Inside of <a href='https://github.com/SlavkoPar/sajt/blob/master/src/cardgame/CardGame.test.js'>CardGame.test.js</a>, I used <b>fetch-mock</b> to mock web requests.
+      <pre style={{color:'white', fontSize:'14px'}}>{`
 
       const allCodes = ["7D", "5D", "AS", "JS", "3S", ...]
       const getCard = () => {
@@ -234,9 +234,10 @@ class Home extends Component {
       const nCards = 10;
       
       const wrapper = mount(<CardGame/>);
-      const btn = wrapper.find('Game').find('button');
+      // const btn = wrapper.find('Game').find('button');
       // btn.simulate('click');
-      // can't use simulate, because test would complete and exit before shuffleDeck has completed
+      // can't use simulate, because test would complete, before shuffleDeck has completed
+
       return store.dispatch(Actions.setInitialState({ nComputers, nCards })).then(() => {
           return store.dispatch(Actions.shuffleDeck()).then(() => {
             const state = store.getState().toJS()
