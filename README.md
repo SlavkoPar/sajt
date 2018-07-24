@@ -354,14 +354,17 @@ it('shuffled N cards', () => {
   const wrapper = mount(<CardGame/>);
   const btn = wrapper.find('Game').find('button');
   // btn.simulate('click');
-  // can't use simulate, because test would complete and exit before shuffleDeck has performed
+  // can't use simulate, because test would complete,  before shuffleDeck has performed
+
   return store.dispatch(Actions.setInitialState({ nComputers, nCards })).then(() => {
+
       // shuffle the cards
       return store.dispatch(Actions.shuffleDeck()).then(() => {
         const state = store.getState().toJS()
         expect(state.human.cards.length).toEqual(nCards)
         expect(state.computers.length).toEqual(nComputers)
         state.computers.forEach(computer => expect(computer.cards.length).toEqual(nCards));
+        
         // play
         Api.humanThinkingTimeout = 0;   
         return store.dispatch(Actions.playHand()).then(() => {
