@@ -352,7 +352,8 @@ it('shuffled N cards', () => {
   fetchMock.get('https://deckofcardsapi.com/api/deck/12345/draw/?count=1', getCard);
 
   const wrapper = mount(<CardGame/>);
-  const btn = wrapper.find('Game').find('button');
+  
+  // const btn = wrapper.find('Game').find('button');
   // btn.simulate('click');
   // can't use simulate, because test would complete,  before shuffleDeck has performed
 
@@ -364,7 +365,7 @@ it('shuffled N cards', () => {
         expect(state.human.cards.length).toEqual(nCards)
         expect(state.computers.length).toEqual(nComputers)
         state.computers.forEach(computer => expect(computer.cards.length).toEqual(nCards));
-        
+
         // play
         Api.humanThinkingTimeout = 0;   
         return store.dispatch(Actions.playHand()).then(() => {
