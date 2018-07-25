@@ -327,8 +327,8 @@ render(
 
 Testing with Jest and Enzyme.<br/>
 File 'src/cardgame/CardGame.test.js'<br/>
-I used <b>fetch-mock</b> to mock web requests.
-I tested the whole app flow, using  <b><i>return store.dispatch(action)</i></b>, instead of simulating.
+I used <b>fetch-mock</b> to mock web requests.<br/>
+I tested the whole app flow, using  <b><i>return store.dispatch(action)</i></b>, instead of simulating the click.<br/>
 In case of simulating the click, test method would exit before the whole async flow has completed.
 
 ```js
