@@ -340,23 +340,23 @@ We have 2 phases:
 Phase 1) shuffling<br/>
 When we dispatch: Actions.shuffleDeck() we have the flow:<br/>
 
-├── shuffleDeck -> shuffleDeckSucceed
-├── repeat actions 10 times
-│   ├── drawTheCard to human -> drawTheCardSucceed
-│   ├── repeat actions 3 times
-│   └──── drawTheCard to computer -> drawTheCardSucceed
-<br/>
+├── shuffleDeck -> shuffleDeckSucceed<br/>
+├── repeat actions 10 times<br/>
+│   ├── drawTheCard to human -> drawTheCardSucceed<br/>
+│   ├── repeat actions 3 times<br/>
+│   └──── drawTheCard to computer -> drawTheCardSucceed<br/>
+<br/><br/>
 Phase 2) playing<br/>
 When we dispatch: Actions.playHand() we have the flow:<br/>
 <br/>
-├── repeat actions 10 times
-│   ├── playHand
-│   │   ├─── humanToPlay -> humanToPlaySucceed -> humanPlayed
-│   │   └─── repeat actions 3 times
-│   │        └─── computerToPlay -> computerPlayed
-│   ├── handPlayed
-│   └── find winner of the hand
-└── find winner of the game
+├── repeat actions 10 times<br/>
+│   ├── playHand<br/>
+│   │   ├─── humanToPlay -> humanToPlaySucceed -> humanPlayed<br/>
+│   │   └─── repeat actions 3 times<br/>
+│   │        └─── computerToPlay -> computerPlayed<br/>
+│   ├── handPlayed<br/>
+│   └── find winner of the hand<br/>
+└── find winner of the game<br/>
 
 ```js
 
