@@ -331,6 +331,33 @@ I used <b>fetch-mock</b> to mock web requests.<br/>
 I tested the whole app flow, using  <b><i>return store.dispatch(action)</i></b>, instead of simulating the click.<br/>
 In case of simulating the click, test method would exit before the whole async flow has completed.
 
+<br/>
+We have 2 phases:
+- Shuffling the cards
+- Playing
+<br/>We have the logic inside of reducers, where each action defines the next action.<br/>
+
+Phase 1) shuffling<br/>
+When we dispatch: Actions.shuffleDeck() we have the flow:<br/>
+
+├── shuffleDeck -> shuffleDeckSucceed
+├── repeat actions 10 times
+│   ├── drawTheCard to human -> drawTheCardSucceed
+│   ├── repeat actions 3 times
+│   └──── drawTheCard to computer -> drawTheCardSucceed
+<br/>
+Phase 2) playing<br/>
+When we dispatch: Actions.playHand() we have the flow:<br/>
+<br/>
+├── repeat actions 10 times
+│   ├── playHand
+│   │   ├─── humanToPlay -> humanToPlaySucceed -> humanPlayed
+│   │   └─── repeat actions 3 times
+│   │        └─── computerToPlay -> computerPlayed
+│   ├── handPlayed
+│   └── find winner of the hand
+└── find winner of the game
+
 ```js
 
 const allCodes = ["7D", "5D", "AS", "JS", "3S", "2D", "4H", "7S", "9H", "0S", "5H", "9S", "0D", "5C", "AD", "8H", "6D", "QS", "7H", "4S", "0C", "7C", "0H", "3C", "6S", "8S", "KC", "QH", "9C", "8D", "4C", "KD", "2H", "6H", "JD", "6C", "2C", "AC", "8C", "JH", "QC", "KH", "KS", "2S", "JC", "3D", "3H", "4D", "AH", "5S", "QD", "9D"]
