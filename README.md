@@ -353,7 +353,7 @@ When we dispatch: Actions.playHand() we have the flow:<br/>
 │   ├── playHand<br/>
 │   │   ├─── humanToPlay -> humanToPlaySucceed -> humanPlayed<br/>
 │   │   └─── repeat actions 3 times<br/>
-│   │         └─── computerToPlay -> computerPlayed<br/>
+│   │ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        └─── computerToPlay -> computerPlayed<br/>
 │   ├── handPlayed<br/>
 │   └── find winner of the hand<br/>
 └── find winner of the game<br/>
