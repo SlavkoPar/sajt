@@ -344,7 +344,7 @@ When we dispatch: Actions.shuffleDeck() we have the flow:<br/>
 ├── repeat actions 10 times<br/>
 │   ├── drawTheCard to human -> drawTheCardSucceed<br/>
 │   └── repeat actions 3 times<br/>
-│         └── drawTheCard to computer -> drawTheCardSucceed<br/>
+│   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     └── drawTheCard to computer -> drawTheCardSucceed<br/>
 <br/><br/>
 Phase 2) playing<br/>
 When we dispatch: Actions.playHand() we have the flow:<br/>
@@ -353,7 +353,7 @@ When we dispatch: Actions.playHand() we have the flow:<br/>
 │   ├── playHand<br/>
 │   │   ├─── humanToPlay -> humanToPlaySucceed -> humanPlayed<br/>
 │   │   └─── repeat actions 3 times<br/>
-│   │ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        └─── computerToPlay -> computerPlayed<br/>
+│   │ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        └─── computerToPlay -> computerPlayed<br/>
 │   ├── handPlayed<br/>
 │   └── find winner of the hand<br/>
 └── find winner of the game<br/>
