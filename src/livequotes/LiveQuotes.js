@@ -171,18 +171,7 @@ class SymbolRow extends React.PureComponent {
 
             <tr>
                 <td>{name}</td>
-                <td style={{ textAlign: 'right', 'paddingRight': '0' }}>
-                    <span>{bidParts.base}</span><span className='last2grid'>{bidParts.last2}</span><sup>{bidParts.fract}</sup>
-                </td>
-                <td style={{ textAlign: 'left', 'paddingLeft': '0', color: bidUp === 'bottom' ? 'green' : 'red' }}>
-                    {bidUp ? <i className={`oi oi-caret-${bidUp}`} /> : null}
-                </td>
-                <td style={{ textAlign: 'right', 'paddingRight': '0' }}>
-                    <span>{askParts.base}</span><span className='last2grid'>{askParts.last2}</span><sup>{askParts.fract}</sup>
-                </td>
-                <td style={{ textAlign: 'left', 'paddingLeft': '0', color: bidUp === 'bottom' ? 'green' : 'red' }}>
-                    {askUp ? <i className={`oi oi-caret-${askUp}`} /> : null}
-                </td>
+                
                 <td>{symbol.strEpoch}</td>
             </tr>
 
